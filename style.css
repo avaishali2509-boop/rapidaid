@@ -1,0 +1,165 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    color: #333;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#firstScreen {
+    background: #E6E6FA;
+}
+
+
+/* Light Lavender */
+
+#emergencyScreen {
+    background: #FFC0CB;
+}
+
+
+/* Light Pink */
+
+#normalScreen {
+    background: #90EE90;
+}
+
+
+/* Light Green */
+
+#pharmacyScreen {
+    background: #ADD8E6;
+}
+
+
+/* Light Blue */
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 48px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 300px;
+}
+
+.home-buttons button {
+    padding: 35px;
+    font-size: 28px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.home-buttons button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.emergency-btn {
+    background: #FF69B4;
+}
+
+.appointment-btn {
+    background: #32CD32;
+}
+
+.pharmacy-btn {
+    background: #1E90FF;
+}
+
+input,
+select,
+button {
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#mapContainer {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    margin: 20px auto;
+    background: #e0f7fa;
+    border: 2px solid #0078d7;
+    border-radius: 10px;
+}
+
+#hospitalMarker,
+#ambulanceMarker,
+#userMarker {
+    position: absolute;
+    font-size: 28px;
+    transition: all 2s linear;
+}
+
+#hospitalMarker {
+    left: 20px;
+    top: 80px;
+}
+
+#ambulanceMarker {
+    left: 20px;
+    top: 80px;
+}
+
+#userMarker {
+    right: 20px;
+    top: 80px;
+}
+
+#popupMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    color: #fff;
+    padding: 22px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    display: none;
+    z-index: 1000;
+    text-align: center;
+}

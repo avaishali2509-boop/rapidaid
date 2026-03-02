@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RapidAid - Smart Health Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <!-- Home Screen -->
+        <section id="firstScreen" class="screen active">
+            <h1>RapidAid</h1>
+            <div class="home-buttons">
+                <button class="emergency-btn" onclick="showEmergency()">🚑 Emergency</button>
+                <button class="appointment-btn" onclick="showNormal()">🩺 Appointment</button>
+                <button class="pharmacy-btn" onclick="showPharmacy()">💊 Pharmacy</button>
+            </div>
+        </section>
+
+        <!-- Emergency Screen -->
+        <section id="emergencyScreen" class="screen">
+            <h2>Emergency Hospitals</h2>
+            <p id="emergencyMsg">Detecting your location...</p>
+            <ul id="hospitalList"></ul>
+        </section>
+
+        <!-- Ambulance Mobile Entry -->
+        <section id="mobileScreen" class="screen">
+            <h2>Confirm Ambulance Booking</h2>
+            <input type="text" id="mobileNumber" placeholder="Enter 10-digit Mobile Number">
+            <button onclick="confirmAmbulance()">Confirm</button>
+            <button onclick="showScreen('emergencyScreen')">Cancel</button>
+        </section>
+
+        <!-- Appointment Screen -->
+        <section id="normalScreen" class="screen">
+            <h2>Book Appointment</h2>
+            <form id="appointmentForm">
+                <input type="text" id="name" placeholder="Your Name" required><br>
+
+                <label>Specialist:</label>
+                <select id="specialist" onchange="updateDoctors()" required>
+        <option value="">--Select Specialist--</option>
+        <option value="Cardiologist">Cardiologist</option>
+        <option value="Neurologist">Neurologist</option>
+        <option value="Gynecologist">Gynecologist</option>
+        <option value="Orthopedic">Orthopedic</option>
+        <option value="Pediatrician">Pediatrician</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="ENT">ENT</option>
+        <option value="General Physician">General Physician</option>
+      </select><br>
+
+                <label>Hospital:</label>
+                <select id="hospitalDropdown" required>
+        <option value="">--Select Hospital--</option>
+      </select><br>
+
+                <label>Doctor:</label>
+                <select id="doctor" required></select><br>
+
+                <label>Date:</label>
+                <input type="date" id="appointmentDate" required><br>
+
+                <label>Time Slot:</label>
+                <select id="timeSlot" required>
+        <option value="">--Select Time Slot--</option>
+        <option>09:00 AM - 10:00 AM</option>
+        <option>10:00 AM - 11:00 AM</option>
+        <option>11:00 AM - 12:00 PM</option>
+        <option>12:00 PM - 01:00 PM</option>
+        <option>02:00 PM - 03:00 PM</option>
+        <option>03:00 PM - 04:00 PM</option>
+        <option>04:00 PM - 05:00 PM</option>
+      </select><br>
+
+                <button type="submit">Book Appointment</button>
+            </form>
+        </section>
+
+        <!-- Pharmacy Screen -->
+        <section id="pharmacyScreen" class="screen">
+            <h2>Order Medicines</h2>
+            <form id="pharmacyForm">
+                <input type="text" id="pharmacyName" placeholder="Your Name" required><br>
+                <input type="text" id="pharmacyMobile" placeholder="Enter 10-digit Mobile Number" required><br>
+                <input type="text" id="address" placeholder="Delivery Address" required><br>
+
+                <label>Symptoms:</label>
+                <select id="symptom" onchange="updateMedicineDropdown()" required>
+        <option value="">--Select Symptom--</option>
+        <option value="Fever">Fever</option>
+        <option value="Cold">Cold</option>
+        <option value="Cough">Cough</option>
+        <option value="Headache">Headache</option>
+        <option value="Allergy">Allergy</option>
+      </select><br>
+
+                <label>Medicine:</label>
+                <select id="medicine" required>
+        <option value="">--Select Medicine--</option>
+      </select><br>
+
+                <input type="number" id="quantity" placeholder="Quantity" required><br>
+
+                <label>Upload Prescription (optional):</label>
+                <input type="file" id="prescription" accept=".jpg,.jpeg,.png,.pdf"><br>
+
+                <label>Payment Method:</label>
+                <select id="paymentMethod" onchange="toggleUPI()" required>
+        <option value="">--Select Payment--</option>
+        <option value="Cash on Delivery">Cash on Delivery</option>
+        <option value="UPI">UPI</option>
+      </select><br>
+
+                <input type="text" id="upiId" placeholder="Enter UPI ID" style="display:none;"><br>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="popupMessage"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
